@@ -12,10 +12,11 @@ type TAssetStoreState = {
   selectedChain: Chain;
   myAssets: AssetsDictionary;
   addAssetList: (asset: Asset) => void;
+  updateSelectedChain: (chain: Chain) => void;
 };
 
 const defaultChain: Chain =
-  chains.find((chain) => chain.chain_name === "emoney") || chains[0];
+  chains.find((chain) => chain.chain_name === "osmosis") || chains[0];
 const defaultAssets: AssetsDictionary = {};
 defaultAssets[defaultChain.chain_name] = getDefaultAssets(
   defaultChain.chain_name
@@ -29,5 +30,12 @@ export const useAssetStore = create<TAssetStoreState>()(
       set((state) => {
         state.myAssets[state.selectedChain.chain_name].push(asset);
       }),
+    updateSelectedChain: (chain) => {
+      set((state) => {
+        state.myAssets[chain.chain_name] =
+          state.myAssets[chain.chain_name] ?? [];
+        state.selectedChain = chain;
+      });
+    },
   }))
 );

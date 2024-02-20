@@ -31,7 +31,7 @@ export function AddAssetModal({ selectedChain, onOk }: AddAssetModalProps) {
     return filteredAsset?.assets || [];
   }, [selectedChain]);
 
-  let curSelAsset: Asset | null = null;
+  let curSelAsset: Asset | null = assetOptions[0] || null;
   const handleSelChange = (selectedAsset: string) => {
     curSelAsset = assetOptions.find((v) => v.name === selectedAsset) ?? null;
   };

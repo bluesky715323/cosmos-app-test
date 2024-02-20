@@ -19,8 +19,12 @@ export type CAOptionType = {
 };
 
 export function CACombobox(props: any) {
-  const [selectedKey, setSelectedKey] = React.useState<React.Key>();
-  let [filterValue, setFilterValue] = React.useState<string>("");
+  const [selectedKey, setSelectedKey] = React.useState<React.Key>(
+    props.initialOption?.value || props.options[0].value
+  );
+  let [filterValue, setFilterValue] = React.useState<string>(
+    props.initialOption?.label || props.options[0].label
+  );
   let filteredItems = React.useMemo(() => {
     const initialItems = props.options.filter(
       (v: CAOptionType) => v.label && v.value
@@ -40,13 +44,13 @@ export function CACombobox(props: any) {
       label={props.label}
       openOnFocus={props.openOnFocus}
       styleProps={props.styleProps}
-      // items={filteredItems}
       inputValue={filterValue}
       onInputChange={(value) => {
         setFilterValue(value);
 
         if (!value) {
-          return setSelectedKey(undefined);
+          setSelectedKey("");
+          props.onSelChange?.("");
         }
       }}
       onSelectionChange={(item) => {
