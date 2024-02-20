@@ -2,15 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { Chain, Asset } from "@chain-registry/types";
 import { assets } from "chain-registry";
-import {
-  BasicModal,
-  Button,
-  Box,
-  Combobox,
-  Stack,
-  Avatar,
-  Text,
-} from "@interchain-ui/react";
+import { BasicModal, Button, Box } from "@interchain-ui/react";
 import { getLogo } from "@/utils";
 import { CACombobox } from "../my-ui/CACombobox";
 import { useAssetStore } from "@/store/AssetStore";
