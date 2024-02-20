@@ -23,7 +23,7 @@ function CreateCosmosApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider>
-      <ChainProvider
+      {/* <ChainProvider
         chains={chains}
         assetLists={assets}
         wallets={wallets}
@@ -41,15 +41,15 @@ function CreateCosmosApp({ Component, pageProps }: AppProps) {
         }}
         // @ts-ignore
         signerOptions={signerOptions}
+      > */}
+      <Box
+        className={themeClass}
+        minHeight="100dvh"
+        backgroundColor={useColorModeValue("$white", "$background")}
       >
-        <Box
-          className={themeClass}
-          minHeight="100dvh"
-          backgroundColor={useColorModeValue("$white", "$background")}
-        >
-          <Component {...pageProps} />
-        </Box>
-      </ChainProvider>
+        <Component {...pageProps} />
+      </Box>
+      {/* </ChainProvider> */}
     </ThemeProvider>
   );
 }
