@@ -2,6 +2,7 @@ import { Box, Button } from "@interchain-ui/react";
 import { getChainLogo } from "@/utils";
 import { useAssetStore } from "@/store/AssetStore";
 import { Chain } from "./Chain";
+import { AddAssetModal } from "../modals";
 
 export interface WalletSectionProps {}
 
@@ -23,6 +24,7 @@ export const WalletSection = ({}: WalletSectionProps) => {
         name={selectedChain.chain_name}
         logo={getChainLogo(selectedChain.chain_name)!}
       />
+      <AddAssetModal selectedChain={selectedChain} />
     </Box>
   );
 };
