@@ -35,6 +35,7 @@ export function Chain({ name, logo = DefaultChainLogo }: ChainProps) {
         overflow="hidden"
       >
         <Image
+          loader={() => logo}
           alt={name}
           src={logo}
           width="38"

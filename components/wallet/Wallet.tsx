@@ -1,8 +1,13 @@
-import { Box } from "@interchain-ui/react";
+import { Box, Button } from "@interchain-ui/react";
+import { getChainLogo } from "@/utils";
+import { useAssetStore } from "@/store/AssetStore";
+import { Chain } from "./Chain";
 
 export interface WalletSectionProps {}
 
 export const WalletSection = ({}: WalletSectionProps) => {
+  const selectedChain = useAssetStore((state) => state.selectedChain);
+
   return (
     <Box
       display="flex"
@@ -14,7 +19,10 @@ export const WalletSection = ({}: WalletSectionProps) => {
         "data-part-id": "wallet-section",
       }}
     >
-      TODO: assets list here!
+      <Chain
+        name={selectedChain.chain_name}
+        logo={getChainLogo(selectedChain.chain_name)!}
+      />
     </Box>
   );
 };

@@ -15,13 +15,11 @@ type TAssetStoreState = {
 };
 
 const defaultChain: Chain =
-  chains.find((chain) => chain.chain_name === "osmosis") || chains[0];
+  chains.find((chain) => chain.chain_name === "emoney") || chains[0];
 const defaultAssets: AssetsDictionary = {};
 defaultAssets[defaultChain.chain_name] = getDefaultAssets(
   defaultChain.chain_name
 );
-
-console.log(assets);
 
 export const useAssetStore = create<TAssetStoreState>()(
   immer((set) => ({
